@@ -64,7 +64,7 @@ def main():
     plt.title('Concentration of C over Time')
     plt.legend()
     plt.grid()
-    plt.show()
+    plt.savefig('results/negative_basic_model.pdf')
 
 if __name__ == "__main__":
     main()
