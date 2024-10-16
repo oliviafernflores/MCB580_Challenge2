@@ -41,9 +41,9 @@ def plot_all_results(time_steps, all_results, param_sets, param_name, param_inde
     for i, (result, params) in enumerate(zip(all_results, param_sets)):
         plt.plot(time_steps, result[:, 2], color=colors[i % len(colors)],
                  label=param_name + ' = ' + str(params[param_name]))
-    plt.axvline(x=1000/4, color='tab:green', label='Signal On', linestyle='--')
-    plt.axvline(x=1000/2, color='tab:red', label='Signal Off', linestyle='--')
-    plt.axvline(x=3*1000/4, color='tab:green', linestyle='--')
+    plt.axvline(x=1000/4, color='limegreen', label='Signal On', linestyle='--')
+    plt.axvline(x=1000/2, color='red', label='Signal Off', linestyle='--')
+    plt.axvline(x=3*1000/4, color='limegreen', linestyle='--')
     plt.xlabel('Time')
     plt.ylabel('Concentration of C')
     plt.title('Concentration of C over Time')
@@ -87,7 +87,7 @@ def main():
     time_steps = np.linspace(0, 1000, 1000)
 
     base_params = {
-        'I': [0],  # I values
+        'I': [0, 0],  # I values
         'kia': [0.01, 0.1, 1, 10],  # kia values
         'Kia': [0.01, 0.1, 1, 10],  # Kia values
         'Fa': [0.01, 0.1, 1, 10],  # Fa values
@@ -113,7 +113,7 @@ def main():
             if key == param_name:
                 param_values.append(base_params[key])
             else:
-                param_values.append([base_params[key][0]])
+                param_values.append([base_params[key][1]])
         index = params_list.index(param_name) + 1
         parameter_sweep(y0, time_steps, param_values, param_name, str(index))
 

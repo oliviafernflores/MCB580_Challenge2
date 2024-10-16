@@ -59,9 +59,9 @@ def main():
     for i, result in enumerate(all_results):
         plt.plot(time_steps, result[:, 2], label=f'Sweep Param Set {i+1}', color=colors[i % len(colors)])
     
-    plt.axvline(x = 1000/4, color = 'tab:green', label = 'signal on', linestyle = '--')
-    plt.axvline(x = 1000/2, color = 'tab:red', label = 'signal off', linestyle = '--')
-    plt.axvline(x = 3*1000/4, color = 'tab:green', linestyle = '--')
+    plt.axvline(x=1000/4, color='limegreen', label='Signal On', linestyle='--')
+    plt.axvline(x=1000/2, color='red', label='Signal Off', linestyle='--')
+    plt.axvline(x=3*1000/4, color='limegreen', linestyle='--')
     plt.xlabel('Time')
     plt.ylabel('Concentration of C')
     plt.title('Concentration of C over Time')
