@@ -37,13 +37,13 @@ def integrate_system(y0, time_steps, params):
 
 def plot_all_results(time_steps, all_results, param_sets, param_name, param_index):
     plt.figure(figsize=(10, 6))
-    colors = ['blue', 'orange', 'purple', 'gold']
+    colors = ['cyan', 'deepskyblue', 'royalblue', 'blueviolet']
     for i, (result, params) in enumerate(zip(all_results, param_sets)):
         plt.plot(time_steps, result[:, 2], color=colors[i % len(colors)],
                  label=param_name + ' = ' + str(params[param_name]))
     plt.axvline(x=1000/4, color='tab:green', label='Signal On', linestyle='--')
     plt.axvline(x=1000/2, color='tab:red', label='Signal Off', linestyle='--')
-    plt.axvline(x=3*1000/4, color='tab:green', label='Signal On', linestyle='--')
+    plt.axvline(x=3*1000/4, color='tab:green', linestyle='--')
     plt.xlabel('Time')
     plt.ylabel('Concentration of C')
     plt.title('Concentration of C over Time')

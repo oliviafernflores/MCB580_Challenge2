@@ -48,13 +48,16 @@ def main():
     param_sets = [
             {'I': 0.0, 'kia': 5, 'Kia': 5, 'Fa': 0.5, 'kfaa': 1, 'Kfaa': 1, 'kcb': 0.5, 'Kcb': 0.5, 'Fb': 0.5, 'kfbb': 0.2, 'Kfbb': 0.2, 'kac': 2, 'Kac': 0.5, 'kbc': 2, 'Kbc': 0.5},
             {'I': 0.0, 'kia': 5, 'Kia': 5, 'Fa': 0.5, 'kfaa': 1, 'Kfaa': 1, 'kcb': 0.1, 'Kcb': 0.01, 'Fb': 0.5, 'kfbb': 0.1, 'Kfbb': 0.01, 'kac': 10, 'Kac': 1, 'kbc': 5, 'Kbc': 0.5},
-            {'I': 0.0, 'kia': 5, 'Kia': 5, 'Fa': 0.5, 'kfaa': 1, 'Kfaa': 1, 'kcb': 0.1, 'Kcb': 0.01, 'Fb': 0.1, 'kfbb': 5, 'Kfbb': 5, 'kac': 10, 'Kac': 10, 'kbc': 0.5, 'Kbc': 0.5}
+            {'I': 0.0, 'kia': 5, 'Kia': 5, 'Fa': 0.5, 'kfaa': 1, 'Kfaa': 1, 'kcb': 0.1, 'Kcb': 0.01, 'Fb': 0.1, 'kfbb': 5, 'Kfbb': 5, 'kac': 10, 'Kac': 10, 'kbc': 0.5, 'Kbc': 0.5},
+            {'I': 0.0, 'kia': 5, 'Kia': 5, 'Fa': 0.5, 'kfaa': 1, 'Kfaa': 1, 'kcb': 0.1, 'Kcb': 0.1, 'Fb': 0.5, 'kfbb': 0.1, 'Kfbb': 0.1, 'kac': 10, 'Kac': 10, 'kbc': 0.5, 'Kbc': 0.5}
         ]
     
     all_results = parameter_sweep(y0, time_steps, param_sets)
     
+    colors = ['tab:blue', 'tab:orange', 'tab:purple', 'tab:cyan']
+    plt.figure(figsize=(10, 6))
     for i, result in enumerate(all_results):
-        plt.plot(time_steps, result[:, 2], label=f'Sweep Param Set {i+1}')
+        plt.plot(time_steps, result[:, 2], label=f'Sweep Param Set {i+1}', color=colors[i % len(colors)])
     
     plt.axvline(x = 1000/4, color = 'tab:green', label = 'signal on', linestyle = '--')
     plt.axvline(x = 1000/2, color = 'tab:red', label = 'signal off', linestyle = '--')
@@ -62,8 +65,9 @@ def main():
     plt.xlabel('Time')
     plt.ylabel('Concentration of C')
     plt.title('Concentration of C over Time')
-    plt.legend()
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15))
     plt.grid()
+    plt.tight_layout()
     plt.savefig('results/negative_basic_model.pdf')
 
 if __name__ == "__main__":
