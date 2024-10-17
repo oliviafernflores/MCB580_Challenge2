@@ -57,7 +57,7 @@ def parameter_sweep(y0, time_steps, param_sets):
 def main():
     # y0 = [.1, .1, .1]
     # time_steps = np.linspace(0, 100, 1000)
-    y0 = [.5, 7.25, 19]
+    y0 = [.5, 10, 20]
     time_steps = np.linspace(0, 1000, 1000)
 
 

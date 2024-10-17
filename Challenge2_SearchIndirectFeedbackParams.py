@@ -3,7 +3,7 @@ from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 from itertools import product
 
-def coupled_system(y, t, I, kia, Kia, Fa, kfaa, Kfaa, kcb, Kcb, Fb, kfbb, Kfbb, kac, Kac, kbc, Kbc):
+def coupled_system(y, t, I, kia, Kia, Fa, kfaa, Kfaa, kab, Kab, Fb, kfbb, Kfbb, kac, Kac, kbc, Kbc):
     A, B, C = y
     if t < 0.2 * total_time:
         input_signal = 1
@@ -15,8 +15,8 @@ def coupled_system(y, t, I, kia, Kia, Fa, kfaa, Kfaa, kcb, Kcb, Fb, kfbb, Kfbb, 
         input_signal = 2
     else:
         input_signal = 1
-    dA_dt = input_signal * kia * ((1 - A) / ((1 - A) + Kia)) - Fa * kfaa * (A / (A + Kfaa))
-    dB_dt = C * kcb * ((1 - B) / ((1 - B) + Kcb)) - Fb * kfbb * (B / (B + Kfbb))
+    dA_dt =  input_signal * kia * ((1 - A) / ((1 - A) + Kia)) - Fa * kfaa * (A / (A + Kfaa))
+    dB_dt = A * kab * ((1 - B) / ((1 - B) + Kab)) - Fb * kfbb * (B / (B + Kfbb))
     dC_dt = A * kac * ((1 - C) / ((1 - C) + Kac)) - B * kbc * (C / (C + Kbc))
     
     return [dA_dt, dB_dt, dC_dt]
@@ -29,7 +29,7 @@ def integrate_system(y0, time_steps, params):
         lambda y, t: coupled_system(y, t, 
                                      params['I'], params['kia'], params['Kia'], 
                                      params['Fa'], params['kfaa'], params['Kfaa'], 
-                                     params['kcb'], params['Kcb'], 
+                                     params['kab'], params['Kab'], 
                                      params['Fb'], params['kfbb'], params['Kfbb'], 
                                      params['kac'], params['Kac'], 
                                      params['kbc'], params['Kbc']),
@@ -54,11 +54,11 @@ def plot_all_results(time_steps, all_results, param_sets, param_name, param_inde
     plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=3)
     
     plt.tight_layout()
-    fname = f'results/NFBLB_{param_name}_{param_index}_sweep.pdf'
+    fname = f'results/IFFLP_{param_name}_{param_index}_sweep.pdf'
     print(f'Saving plot: {fname}')
     plt.savefig(fname)
     plt.close()
-    
+
 def parameter_sweep(y0, time_steps, param_values, param_name, param_index):
     all_results = []
     param_sets = []
@@ -70,8 +70,8 @@ def parameter_sweep(y0, time_steps, param_values, param_name, param_index):
             'Fa': params[3],
             'kfaa': params[4],
             'Kfaa': params[5],
-            'kcb': params[6],
-            'Kcb': params[7],
+            'kab': params[6],
+            'Kab': params[7],
             'Fb': params[8],
             'kfbb': params[9],
             'Kfbb': params[10],
@@ -88,6 +88,7 @@ def parameter_sweep(y0, time_steps, param_values, param_name, param_index):
 def main():
     y0 = [0.1, 0.1, 0.1]
     time_steps = np.linspace(0, 1000, 1000)
+    
 
     base_params = {
         'I': [1, 1],  # I values
@@ -96,8 +97,8 @@ def main():
         'Fa': [0.01, 0.1, 1, 10, 100],  # Fa values
         'kfaa': [0.01, 0.1, 1, 10, 100],  # kfaa values
         'Kfaa': [0.01, 0.1, 1, 10, 100],  # Kfaa values
-        'kcb': [0.01, 0.1, 1, 10, 100],  # kcb values
-        'Kcb': [0.01, 0.1, 1, 10, 100],  # Kcb values
+        'kab': [0.01, 0.1, 1, 10, 100],  # kcb values
+        'Kab': [0.01, 0.1, 1, 10, 100],  # Kcb values
         'Fb': [0.01, 0.1, 1, 10, 100],  # Fb values
         'kfbb': [0.01, 0.1, 1, 10, 100],  # kfbb values
         'Kfbb': [0.01, 0.1, 1, 10, 100],  # Kfbb values
@@ -107,7 +108,7 @@ def main():
         'Kbc': [0.01, 0.1, 1, 10, 100],  # Kbc values
     }
 
-    params_list = ['kia', 'Kia', 'Fa', 'kfaa', 'Kfaa', 'kcb', 'Kcb', 'Fb', 'kfbb', 'Kfbb', 'kac', 'Kac', 'kbc', 'Kbc']
+    params_list = ['kia', 'Kia', 'Fa', 'kfaa', 'Kfaa', 'kab', 'Kab', 'Fb', 'kfbb', 'Kfbb', 'kac', 'Kac', 'kbc', 'Kbc']
     
     for param_name in params_list:
         print(f"Processing parameter: {param_name}")
