@@ -15,6 +15,7 @@ def coupled_system(y, t, I, kia, Kia, Fa, kfaa, Kfaa, kcb, Kcb, Fb, kfbb, Kfbb, 
         input_signal = 2
     else:
         input_signal = 1
+        
     dA_dt = input_signal * kia * ((1 - A) / ((1 - A) + Kia)) - Fa * kfaa * (A / (A + Kfaa))
     dB_dt = C * kcb * ((1 - B) / ((1 - B) + Kcb)) - Fb * kfbb * (B / (B + Kfbb))
     dC_dt = A * kac * ((1 - C) / ((1 - C) + Kac)) - B * kbc * (C / (C + Kbc))
@@ -37,12 +38,15 @@ def integrate_system(y0, time_steps, params):
     )
     return result
 
-def plot_all_results(time_steps, all_results, param_sets, param_name, param_index):
+def calculate_percent_difference(C_value_0_3, C_value_0_5):
+    return (abs(C_value_0_3 - C_value_0_5) / ((C_value_0_3 + C_value_0_5) / 2)) * 100
+
+def plot_all_results(time_steps, all_results, param_sets, param_name, param_index, percents):
     plt.figure(figsize=(10, 6))
     colors = ['cyan', 'deepskyblue', 'royalblue', 'blueviolet', 'mediumvioletred']
     for i, (result, params) in enumerate(zip(all_results, param_sets)):
         plt.plot(time_steps, result[:, 2], color=colors[i % len(colors)],
-                 label=param_name + ' = ' + str(params[param_name]))
+                 label=f'{param_name} = {params[param_name]}, Diff = {percents[i]:.2f}%')
     plt.axvline(x=0.2*total_time, color='limegreen', label='Signal On', linestyle='--')
     plt.axvline(x=0.4*total_time, color='red', label='Signal Off', linestyle='--')
     plt.axvline(x=0.6*total_time, color='limegreen', linestyle='--')
@@ -62,6 +66,10 @@ def plot_all_results(time_steps, all_results, param_sets, param_name, param_inde
 def parameter_sweep(y0, time_steps, param_values, param_name, param_index):
     all_results = []
     param_sets = []
+    percents = []
+    # first_time_point = 0.3 * 1000
+    # second_time_point = 0.5 * 1000
+    
     for params in product(*param_values):
         param_dict = {
             'I': params[0],
@@ -83,11 +91,21 @@ def parameter_sweep(y0, time_steps, param_values, param_name, param_index):
         result = integrate_system(y0, time_steps, param_dict)
         all_results.append(result)
         param_sets.append(param_dict)
-    plot_all_results(time_steps, all_results, param_sets, param_name, param_index)
+        
+        # Calculate percent difference for C at the two time points
+        C_value_0_3 = result[int(0.3 * len(time_steps)), 2]
+        C_value_0_5 = result[int(0.5 * len(time_steps)), 2]
+        percent_difference = calculate_percent_difference(C_value_0_3, C_value_0_5)
+        percents.append(percent_difference)
+
+    plot_all_results(time_steps, all_results, param_sets, param_name, param_index, percents)
     
 def main():
-    y0 = [0.1, 0.1, 0.1]
+    y0 = [0.1, 0.1, 0.5]
     time_steps = np.linspace(0, 1000, 1000)
+
+    param_sets = [{'I': 1, 'kia': 5, 'Kia': 20, 'Fa': 0.5, 'kfaa': 1, 'Kfaa': 1, 'kcb': 0.1, 'Kcb': 0.01, 'Fb': 0.5, 'kfbb': 0.1, 'Kfbb': 0.01, 'kac': 10, 'Kac': 1, 'kbc': 5, 'Kbc': 0.5}
+        ]
 
     base_params = {
         'I': [1, 1],  # I values
@@ -108,17 +126,18 @@ def main():
     }
 
     params_list = ['kia', 'Kia', 'Fa', 'kfaa', 'Kfaa', 'kcb', 'Kcb', 'Fb', 'kfbb', 'Kfbb', 'kac', 'Kac', 'kbc', 'Kbc']
-    
+
     for param_name in params_list:
         print(f"Processing parameter: {param_name}")
         param_values = []
         for key in base_params.keys():
             if key == param_name:
-                param_values.append(base_params[key])
+                param_values.append(base_params[key])  # This is a list
             else:
-                param_values.append([base_params[key][1]])
+                param_values.append([param_sets[0][key]])  # Wrap the non-list values in a list
         index = params_list.index(param_name) + 1
         parameter_sweep(y0, time_steps, param_values, param_name, str(index))
+
 
 if __name__ == "__main__":
     main()
