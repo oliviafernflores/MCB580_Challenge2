@@ -67,8 +67,6 @@ def parameter_sweep(y0, time_steps, param_values, param_name, param_index):
     all_results = []
     param_sets = []
     percents = []
-    # first_time_point = 0.3 * 1000
-    # second_time_point = 0.5 * 1000
     
     for params in product(*param_values):
         param_dict = {
@@ -108,21 +106,21 @@ def main():
         ]
 
     base_params = {
-        'I': [1, 1],  # I values
-        'kia': [0.01, 0.1, 1, 10, 100],  # kia values
-        'Kia': [0.01, 0.1, 1, 10, 100],  # Kia values
-        'Fa': [0.01, 0.1, 1, 10, 100],  # Fa values
-        'kfaa': [0.01, 0.1, 1, 10, 100],  # kfaa values
-        'Kfaa': [0.01, 0.1, 1, 10, 100],  # Kfaa values
-        'kcb': [0.01, 0.1, 1, 10, 100],  # kcb values
-        'Kcb': [0.01, 0.1, 1, 10, 100],  # Kcb values
-        'Fb': [0.01, 0.1, 1, 10, 100],  # Fb values
-        'kfbb': [0.01, 0.1, 1, 10, 100],  # kfbb values
-        'Kfbb': [0.01, 0.1, 1, 10, 100],  # Kfbb values
-        'kac': [0.01, 0.1, 1, 10, 100],  # kac values
-        'Kac': [0.01, 0.1, 1, 10, 100],  # Kac values
-        'kbc': [0.01, 0.1, 1, 10, 100],  # kbc values
-        'Kbc': [0.01, 0.1, 1, 10, 100],  # Kbc values
+        'I': [1, 1],
+        'kia': [0.01, 0.1, 1, 10, 100],
+        'Kia': [0.01, 0.1, 1, 10, 100],
+        'Fa': [0.01, 0.1, 1, 10, 100],
+        'kfaa': [0.01, 0.1, 1, 10, 100],
+        'Kfaa': [0.01, 0.1, 1, 10, 100],
+        'kcb': [0.01, 0.1, 1, 10, 100],
+        'Kcb': [0.01, 0.1, 1, 10, 100],
+        'Fb': [0.01, 0.1, 1, 10, 100],
+        'kfbb': [0.01, 0.1, 1, 10, 100],
+        'Kfbb': [0.01, 0.1, 1, 10, 100],
+        'kac': [0.01, 0.1, 1, 10, 100],
+        'Kac': [0.01, 0.1, 1, 10, 100],
+        'kbc': [0.01, 0.1, 1, 10, 100],
+        'Kbc': [0.01, 0.1, 1, 10, 100], 
     }
 
     params_list = ['kia', 'Kia', 'Fa', 'kfaa', 'Kfaa', 'kcb', 'Kcb', 'Fb', 'kfbb', 'Kfbb', 'kac', 'Kac', 'kbc', 'Kbc']

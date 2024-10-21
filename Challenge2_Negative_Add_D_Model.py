@@ -57,7 +57,7 @@ def find_first_zero_crossings(dC_dt, time_steps, start_time):
     return None
 
 def main():
-    y0 = [.1, .1, .5, .5]  # Initial values for A, B, C, D
+    y0 = [.1, .1, .5, .5]
     time_steps = np.linspace(0, 1000, 1000)
 
     param_sets = [
@@ -92,8 +92,6 @@ def main():
         index_0_3 = find_first_zero_crossings(dC_dt, time_steps, first_time_point)
         index_0_5 = find_first_zero_crossings(dC_dt, time_steps, second_time_point)
         if index_0_3 is not None and index_0_5 is not None:
-            # C_value_0_3 = result[index_0_3, 2]
-            # C_value_0_5 = result[index_0_5, 2]
             C_value_0_3 = result[300, 2]
             C_value_0_5 = result[500, 2]
             print(C_value_0_3, C_value_0_5)

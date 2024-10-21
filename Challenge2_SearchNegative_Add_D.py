@@ -112,7 +112,7 @@ def parameter_sweep(y0, time_steps, param_values, param_name, param_index):
     plot_all_results(time_steps, all_results, param_sets, param_name, param_index, percents)
     
 def main():
-    y0 = [0.1, 0.1, 0.5, 0.1]  # Initial values for A, B, C, D
+    y0 = [0.1, 0.1, 0.5, 0.1]
     time_steps = np.linspace(0, 1000, 1000)
 
     param_sets = [{'I': 1, 'kia': 5, 'Kia': 20, 'Fa': 0.5, 'kfaa': 1, 'Kfaa': 1, 
@@ -123,21 +123,21 @@ def main():
          'kdc': 0.1, 'Kdc': 0.01}]
     
     base_params = {
-        'I': [1, 1],  # I values
-        'kia': [0.01, 0.1, 1, 10, 100],  # kia values
-        'Kia': [0.01, 0.1, 1, 10, 100],  # Kia values
-        'Fa': [0.01, 0.1, 1, 10, 100],  # Fa values
-        'kfaa': [0.01, 0.1, 1, 10, 100],  # kfaa values
-        'Kfaa': [0.01, 0.1, 1, 10, 100],  # Kfaa values
-        'kcb': [0.01, 0.1, 1, 10, 100],  # kcb values
-        'Kcb': [0.01, 0.1, 1, 10, 100],  # Kcb values
-        'Fb': [0.01, 0.1, 1, 10, 100],  # Fb values
-        'kfbb': [0.01, 0.1, 1, 10, 100],  # kfbb values
-        'Kfbb': [0.01, 0.1, 1, 10, 100],  # Kfbb values
-        'kac': [0.01, 0.1, 1, 10, 100],  # kac values
-        'Kac': [0.01, 0.1, 1, 10, 100],  # Kac values
-        'kbc': [0.01, 0.1, 1, 10, 100],  # kbc values
-        'Kbc': [0.01, 0.1, 1, 10, 100],  # Kbc values
+        'I': [1, 1],
+        'kia': [0.01, 0.1, 1, 10, 100],
+        'Kia': [0.01, 0.1, 1, 10, 100],
+        'Fa': [0.01, 0.1, 1, 10, 100],
+        'kfaa': [0.01, 0.1, 1, 10, 100],
+        'Kfaa': [0.01, 0.1, 1, 10, 100],
+        'kcb': [0.01, 0.1, 1, 10, 100],
+        'Kcb': [0.01, 0.1, 1, 10, 100],
+        'Fb': [0.01, 0.1, 1, 10, 100],
+        'kfbb': [0.01, 0.1, 1, 10, 100],
+        'Kfbb': [0.01, 0.1, 1, 10, 100],
+        'kac': [0.01, 0.1, 1, 10, 100],
+        'Kac': [0.01, 0.1, 1, 10, 100],
+        'kbc': [0.01, 0.1, 1, 10, 100],
+        'Kbc': [0.01, 0.1, 1, 10, 100],
         'kad': [0.01, 0.1, 1, 10, 100],
         'Kad': [0.01, 0.1, 1, 10, 100],
         'Fd': [0.01, 0.1, 1, 10, 100],
