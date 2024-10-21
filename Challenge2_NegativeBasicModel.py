@@ -56,10 +56,8 @@ def main():
     time_steps = np.linspace(0, 1000, 1000)
 
     param_sets = [
-        {'I': 1, 'kia': 5, 'Kia': 20, 'Fa': 0.5, 'kfaa': 1, 'Kfaa': 1, 'kcb': 0.1, 'Kcb': 0.01, 'Fb': 0.5, 'kfbb': 0.1, 'Kfbb': 0.01, 'kac': 10, 'Kac': 1, 'kbc': 5, 'Kbc': 0.5},
-        {'I': 1, 'kia': 1, 'Kia': 10, 'Fa': 1, 'kfaa': 0.1, 'Kfaa': 0.01, 'kcb': 1, 'Kcb': 0.01, 'Fb': 0.1, 'kfbb': 1, 'Kfbb': 0.01, 'kac': 1, 'Kac': 0.1, 'kbc': 1, 'Kbc': 0.1},
-        {'I': 1, 'kia': 1, 'Kia': 10, 'Fa': 1, 'kfaa': 0.1, 'Kfaa': 0.01, 'kcb': 1, 'Kcb': 0.01, 'Fb': 0.1, 'kfbb': 1, 'Kfbb': 0.01, 'kac': 1, 'Kac': 0.1, 'kbc': 1, 'Kbc': 0.1}
-    ]
+        {'I': 1, 'kia': 5, 'Kia': 20, 'Fa': 0.5, 'kfaa': 1, 'Kfaa': 1, 'kcb': 0.1, 'Kcb': 0.01, 'Fb': 0.5, 'kfbb': 0.1, 'Kfbb': 0.01, 'kac': 10, 'Kac': 1, 'kbc': 5, 'Kbc': 0.5}
+        ]
     
     all_results = parameter_sweep(y0, time_steps, param_sets)
     
@@ -94,10 +92,12 @@ def main():
     colors = ['tab:blue', 'tab:orange', 'tab:purple', 'tab:cyan']
     plt.figure(figsize=(10, 6))
     for i, result in enumerate(all_results):
-        plt.plot(time_steps, result[:, 2], label=f'Sweep Param Set {i+1},  {str(round(percents[i], 2))}%', color=colors[i % len(colors)])
+        plt.plot(time_steps, result[:, 2], label=f'Adaptive Paramter Set, {str(round(percents[i], 2))}%', color=colors[i % len(colors)])
     
-    plt.axvline(x=0.2*total_time, color='limegreen', label='0.2 * total_time', linestyle='--')
-    plt.axvline(x=0.4*total_time, color='red', label='0.4 * total_time', linestyle='--')
+    plt.axvline(x=0.2*total_time, color='limegreen', label='Signal Added', linestyle='--')
+    plt.axvline(x=0.4*total_time, color='red', label='Signal Removed', linestyle='--')
+    plt.axvline(x=0.6*total_time, color='limegreen', linestyle='--')
+    plt.axvline(x=0.8*total_time, color='red', linestyle='--')
     plt.xlabel('Time')
     plt.ylabel('Concentration of C')
     plt.title('Concentration of C over Time')

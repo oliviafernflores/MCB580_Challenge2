@@ -4,98 +4,292 @@
 
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{float} 
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage[format=hang,font=small]{caption}
 
-\title{Text}
+\title{Developing a Model for a Robust and Adaptive Biological Circuit}
 \author{Olivia Fernflores}
 
 \begin{document}
 \maketitle
 
 \section{Introduction}
-Transcription regulation is of key importance biological systems because at the most basic level, it controls gene expression. By having a mechanism to control gene expression, organisms can differentially express genes under specific conditions such as receipt of an external signal, being in a particular stage of development, or being exposed to a pathogen. Because of its applications across most things that an organism would ever need to do, being able to differentially express genes is essential for survival and is a highly conserved feature. One common way of modeling transcription regulation is through networks, where each node is a gene or protein and each edge is the relationship between two nodes (activation or repression). Once you have a few unique nodes, there are many possibilities for how the nodes will be connected, but the possibilities are limited. Because there are a finite number of ways the nodes can be connected, we can think of each possibility as a motif. This allows us to recognize when the same pattern of node connections arises more than once despite the context being different. 
-
-In biological systems, we would expect the simplest network motif to be conserved unless there is a biological advantage to a more complicated network. Milo et al. explored this hypothesis and found that some transcription regulation networks, such as feed forward loops, are observed about 10 standard deviations more in biological systems than we would expect if this network motif occurred due to chance alone \cite{Milo2002}. In this project, we seek to understand why these feed forward loops are biologically advantageous (as indicated by their high prevalence) by modeling two types of feed forward loops and comparing to simpler networks of direct and indirect transcription regulation. 
+Biochemical circuits are essential for modulating signal response in cells. As with any circuit, the topology of the biochemical circuit determines how it responds to different signals. Some motifs are robust to changes in one or many parameters, whereas other motifs only function under a specific set of parameters. Biologically, it important for a signaling system to be able to respond to an input signal by changing the output of a specific protein. Specifically, this paper is concerned with perfect adaptation, where a circuit has the ability to rapidly respond to a change in the input signal before quickly returning to some equilibrium concentration. Examples of minimally adaptive circuits are presetned in the paper \cite{challenge2paperD2L} and we seek to find a more robust circuit design. Because we are concerned with biological concentrations of enzymes and proteins and understand that there may be small psychiological changes in parameters that we assume mathematically to be exact numbers, it is important to model circuits that not only respond to the input signal but are also robust to changes in parameter values. By robust to changes in parameter values, we mean that changing one parameter with all else held constant will not render the circuit unable to adapt, which in this paper we classify as a difference in concentrations befor and after the response that's less than 10\%. Here, we examine the behavior of the negative feedback loop with a buffer node (NFLBN) presented in \cite{challenge2paperD2L} and find that adding a node and adding a direct relationship between the input response node and the buffer node improves behavioral robustness in response to varrying parameters. 
 
 \section{Model Development}
 
-\subsection{Direct Regulation of Transcription}
+\subsection{Negative Feedback Loop with a Buffer Node - NFLBN}
 
-To model transcription regulation, we started with a simple system of direct regulation. Under a model of direct regulation, a signal turns on a single transcription factor, \textit{TF1}, and that transcription figure binds to a gene, \textit{Gene i} with a binding constant \textit{Kd}. When \textit{TF1} is bound, \textit{Gene i} is transcribed at a rate \textit{k1}, producing \textit{RNAi}. \textit{RNAi} is also degraded, which happens at a rate \textit{k2}. This is shown in Figure 1A. Together, these parameters can describe the rate at which the [\textit{RNAi}] is changing over time with the following equation:
+The first model for a minimally adaptive biochemical circuit is the model presented of a negative feedback loop with a buffer node presented in \cite{challenge2paperD2L}. As shown in Figure 1, this model has three nodes, A, B, and C. \textit{A} is regulated by the input signal and an enzyme responsible for it's degredation, \textit{Faa}. \textit{B} is degraded by an enzyme, \textit{Fbb}, and is part of negative feedback loop with \textit{C}. \textit{C} controls the output signal, so we look at adaptation in terms of the change in \textit{C} with respect to time.   
 
-\[
-\frac{d[RNAi]}{dt} = k_1 * f_b - k_2 * [RNAi]
-\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback.png}
+    \caption{Negative Feedback Loop with a Buffer Node: \textit{A} responds directly to the input signal and is degraded by \textit{Faa}. \textit{B} is activated by \textit{C} and degraded by \textit{Fbb}. \textit{C} activates \textit{B} and is repressed by \textit{B} through a negative feedback loop. \textit{C} also controls the output signal.}
+    \label{fig:1}
+\end{figure}
 
-This equation quantifies the change in [\textit{RNAi}] over time using the \textit{k1} and \textit{k2} parameters previously mentioned and includes an additional factor, \textit{fb}, that describes what fraction of transcription factor is bound to our gene of interest. This is calculated as 1 minus the fraction unbound, which is a classic result in biochemistry called the \textit{Hill Equation} and is written like this \cite{Hill2008}:
-
-\[
-f_b = \left(1 - \frac{1}{1 + \left(\frac{TF_1}{Kd_1}\right)}\right)
-\]
-
-If we combine the two equations above, we can build our full mathematical model for direct regulation. 
+The NFLBN can be represented with a set of coupled differential equations modeling enzyme kinetics. As labeled in Figure 1, each node is controlled by two parameters. \textit{K}'s represent the Michaelis-Menten constants named as follows: First enzyme or protein + activates or inhibits + second enzyme or protein. \textit{k}'s represent rate constants describing the speed of each reaction. \textit{Faa} and \textit{Fbb} are initial concentrations of enzymes, and \textit{I} is the strength of the input singal. For an activation process, the Michaelis-Menten equation takes the form 
 
 \[
-\frac{d[RNAi]}{dt} = k_1 * \left(1 - \frac{1}{1 + \left(\frac{TF_1}{Kd_1}\right)}\right) - k_2 * [RNAi]
+v = \frac{V_{\max} [S]}{K_m + [S]}
 \]
 
 
+where:
+\begin{itemize}
+    \item \(v\) is the rate of the reaction (speed per unit time), 
+    \item \(V_{\max}\) is the maximum rate (\textit{k__} * concentration(s) that affect rate),
+    \item \([S]\) is the substrate concentration,
+    \item \(K_m\) is the Michaelis-Menten constant.
+\end{itemize}
 
 
+
+Using this general equation, we can construct a differential equation representing the change in concentration of each node in our circuit with respect to time. Using node \textit{A} as an example, our equation will have two parts:
+\\
+
+1. Describes the production of A
+
+\[
+\text{input\_signal} \cdot k_{ia} \cdot \frac{(1 - A)}{(1 - A) + K_{ia}}
+\]
+
+
+where:
+\begin{itemize}
+    \item \(\text{input\_signal}\) is the strength of the input signal,
+    \item \(k_{ia}\) is the rate constant for the input signal's effect on \textit{A},
+    \item \((1 - A)\) indicates the available capacity of \textit{A} for production,
+    \item \(K_{ia}\) is the Michaelis-Menten constant for production of \textit{A}.
+\end{itemize}
+\\
+2. Describes the degradation of A
+
+\[
+F_a \cdot k_{faa} \cdot \frac{A}{A + K_{faa}}
+\]
+
+where:
+\begin{itemize}
+    \item \(F_a\) is concentration of the enzyme that does the reverse reaction (degradation) on \textit{A},
+    \item \(k_{faa}\) is the rate constant for the effect of \textit{A} on the consumption of \textit{A},
+    \item \(A\) is the concentration of substance \textit{A}in the system,
+    \item \(K_{faa}\) is the Michaelis-Menten constant for the degradation of \textit{A}.
+\end{itemize}
+
+
+
+If you follow this process for all three nodes in the circuit, \textit{A}, \textit{B}, and \textit{C}, you end up with a set of coupled differential equations describing the behavior of the circuit with respect to time. These equations describe concentrations of \textit{A} (1), \textit{B} (2), and \textit{C} (3), and can be solved to model the behavior of the system as parameter values change. 
+\\
+\\
+(1)
+\[
+\frac{dA}{dt} = \text{input\_signal} \cdot k_{ia} \cdot \frac{(1 - A)}{(1 - A) + K_{ia}} - F_a \cdot k_{faa} \cdot \frac{A}{A + K_{faa}}
+\]
+\\
+(2)
+\[
+\frac{dB}{dt} = C \cdot k_{cb} \cdot \frac{(1 - B)}{(1 - B) + K_{cb}} - F_b \cdot k_{fbb} \cdot \frac{B}{B + K_{fbb}}
+\]
+\\
+(3)
+\[
+\frac{dC}{dt} = A \cdot k_{ac} \cdot \frac{(1 - C)}{(1 - C) + K_{ac}} - B \cdot k_{bc} \cdot \frac{C}{C + K_{bc}}
+\]
+
+Although this circuit is capable of adaptation under specific parameter values, it displays limited robustness to changes in specific parameters. To attempt to make the circuit more robust to parameter changes, we explored adding redundancy to the circuit and incorporating an additional relationship between \textit{A} and \textit{B}. 
+
+\subsection{NFLBN + An Additional Node \textit{D}}
+
+Inspired by the high prevelance of redundancy in biological systems, we decided to add an additional node to our circuit and see if that improved its robustness. Redundancy is frequently used biologically to allow robustness, such as gene duplications for genes with critical functions, multiple types of immune system responses that ensure a response even when part of the system fails, and pathways during limb development that serve the same function but are controlled differently. In our model, we incorporate a fourth node, \textit{D}, that also regulates \textit{C} through a negative feedback loop, but the relationship is reverse to that of \textit{B} and \textit{C}. As seen in Figure 2, most of the circuit is unchanged, so our equations for \textit{A} and \textit{B} will stay the same. 
+\\
+\\
+(1)
+\[
+\frac{dA}{dt} = \text{input\_signal} \cdot k_{ia} \cdot \frac{(1 - A)}{(1 - A) + K_{ia}} - F_a \cdot k_{faa} \cdot \frac{A}{A + K_{faa}}
+\]
+\\
+(2)
+\[
+\frac{dB}{dt} = C \cdot k_{cb} \cdot \frac{(1 - B)}{(1 - B) + K_{cb}} - F_b \cdot k_{fbb} \cdot \frac{B}{B + K_{fbb}}
+\]
+\\
+
+When it comes to \textit{C}, our equation will incorporate an additional term to describe its activation by C. Using the same technique described for the NFLBN model, this yields the following equation for \textit{C}:
+\\
+\\
+(3)
+\[
+\frac{dC}{dt} = A \cdot k_{ac} \cdot \frac{(1 - C)}{(1 - C) + K_{ac}} - B \cdot k_{bc} \cdot \frac{C}{C + K_{bc}} + D \cdot k_{cd} \cdot \frac{(1 - C)}{(1 - C) + K_{dc}}
+\]
+
+Because we now have a fourth node in our system, we must also add a fourth differential equation to represent the concentration of this species. \textit{D} is activated by \textit{A}, and degraded by both \textit{Fd} and \textit{C}. Our equation will have three terms, one for production of \textit{D} by \textit{A}, and two for degradtion by each of \textit{Fd} and \textit{C}. Overall, this gives the following equation:
+\\
+\\
+(4)
+\[
+\frac{dD}{dt} = A \cdot k_{ad} \cdot \frac{(1 - D)}{(1 - D) + K_{ad}} - F_d \cdot k_{fdd} \cdot \frac{D}{D + K_{fdd}} - C \cdot k_{cd} \cdot \frac{D}{D + K_{cd}}
+\]
+
+Together, these equations represent the system described and shown in Figure 2. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D.png}
+    \caption{NFLBN + Additional Node \textid{D}: New components of the circuit added to this model are shown in color. The only new relationships are \textit{A} activating \textit{D}, and the feedback loop between \textit{C} and \textit{D}.}
+    \label{fig:2}
+\end{figure}
+
+\subsection{NFLBN + An Additional Node \textit{D} + Direct Relationship Between \textit{A} and \textit{B}}
+
+The final model we considered in this paper builds on the previous model where we added node \textit{D} and incorporates a direct relationship between the input response node, \textit{A}, and the buffer node, \textit{B}. As shown in Figure 3, we took previous model of NFLBN + Node \textit{D} and added complexity by allowing \textit{A} to directly inhibit \textit{B}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D_and_A_regulates_B.png}
+    \caption{NFLBN + Additional Node \textid{D}: New components of the circuit added to this model are shown in red. The only new relationships is \textit{A} inhibiting \textit{B}.}
+    \label{fig:3}
+\end{figure}
+
+This is the most complex model we explored in this paper. Because there is only one difference between this model and the previous model, and that change only applies to \textit{B}, we need to update the equation describing the change in \textit{B} over time to include a term for its inhibition by \textit{A}. Again, using the same principles for constructing Michaelis-Menten equations described earlier, we must add the term
+\\
+
+\[A \cdot k_{ab} \cdot \frac{B}{B + K_{ab}}\]
+
+\\
+\\
+\\
+This gives the following equation for \textit{B}:
+
+\\
+\[
+\frac{dB}{dt} = C \cdot k_{cb} \cdot \frac{(1 - B)}{(1 - B) + K_{cb}} - F_b \cdot k_{fbb} \cdot \frac{B}{B + K_{fbb}} - A \cdot k_{ab} \cdot \frac{B}{B + K_{ab}}
+\]
+\\
+\\
+
+Using this equation in place of equation 2 as previously described, our circuit can be modeled by these four equations. 
+\\
+\\
+(1)
+\[
+\frac{dA}{dt} = \text{input\_signal} \cdot k_{ia} \cdot \frac{(1 - A)}{(1 - A) + K_{ia}} - F_a \cdot k_{faa} \cdot \frac{A}{A + K_{faa}}
+\]
+\\
+(2)
+\[
+\frac{dB}{dt} = C \cdot k_{cb} \cdot \frac{(1 - B)}{(1 - B) + K_{cb}} - F_b \cdot k_{fbb} \cdot \frac{B}{B + K_{fbb}} - A \cdot k_{ab} \cdot \frac{B}{B + K_{ab}}
+\]
+\\
+(3)
+\[
+\frac{dC}{dt} = A \cdot k_{ac} \cdot \frac{(1 - C)}{(1 - C) + K_{ac}} - B \cdot k_{bc} \cdot \frac{C}{C + K_{bc}} + D \cdot k_{cd} \cdot \frac{(1 - C)}{(1 - C) + K_{dc}}
+\]
+\\
+(4)
+\[
+\frac{dD}{dt} = A \cdot k_{ad} \cdot \frac{(1 - D)}{(1 - D) + K_{ad}} - F_d \cdot k_{fdd} \cdot \frac{D}{D + K_{fdd}} - C \cdot k_{cd} \cdot \frac{D}{D + K_{cd}}
+\]
+\\
 
 \section{Results}
 
-Because of their prevalence in biological systems, we hypothesized that the ``and gate'' and ``or gate'' models for regulating transcription would have unique properties that are not possible to achieve with a simple direct or indirect regulation. To test this hypothesis, we continuously solved for \(\frac{d[RNAi]}{dt}\) using our system of coupled differential equations at very small time intervals under a wide range of parameter value for \textit{k1, k2, k3, k4, k5, k6,} and \textit{Kd1, Kd2, Kd11}. We find that the ``and gate'' model provides unique capabilities to have a delay when initiating production of \textit{RNAi} and a quick stop in the production of \textit{RNAi}. We also find that the ``or gate'' model behaves in the opposite manner, showing a quick initiation of production of \textit{RNAi} and a delay in stopping production of \textit{RNAi}. For comparison purposes, all results described here were done with all \textit{k} and \textit{Kd} values equal to one, although our findings appear to be robust to variation in these parameter values. 
+\subsection{Finding Parameter Values for the NFLBN that Allow Adaptation}
 
-To examine the behavior when initiating \textit{RNAi} production, we allowed all four systems to reach their steady state (achieved when the derivative is equal to zero and indicates that the concentration has reached its maximum value) and then measured the time it takes to reach half of the steady state amount and the full steady state amount (Table 1).
+The first step in this project was to find a set of parameter values that allow the NFLBN to behave adaptively in response to an input signal. Using the guidelines in Ma et al. \cite{challenge2paperD2L}, we did a parameter sweep across using initial concentrations of 0.1, 0.1, and 0.5 for \textit{A}, \textit{B}, and \textit{C} respectively and input singal strength of 1 (beginning) and 2 (green line indicates addition of signal). Iteratively, we examined the behavior of the circuit as we varried each of 13 parameters in our differentials equations while keeping the rest constant. An example of some of the plots generated from these parameter sweeps can be seen below in Figure 4 and the parameter values that allow the NFLBN circuit to behave adaptively are shown in Table 1 (called "Adaptive Parameters" for the remainder of the paper). 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/ParameterSweepExample.pdf}
+    \caption{An example of the parameter sweep results for the NFLBN. Initial concentrations of 0.1, 0.1, and 0.5 for \textit{A}, \textit{B}, and \textit{C} respectively. Input signal begins at 1, changes to 2 at the green dotted line, then goes back to 1 at the red dotted line. This continues every 200 time units. All other parameters held constant.}
+    \label{fig:4}
+\end{figure}
 
 \begin{table}[h]
     \centering
-    \caption{Time to Half and Full Steady States}
-    \begin{tabular}{@{}lcc@{}}
+    \caption{NFLBN Adaptive Behavior Parameters}
+    \begin{tabular}{@{}ll@{}}
         \toprule
-        \textbf{Regulation Type} & \textbf{Time to Half Steady State} & \textbf{Time to Steady State} \\ 
+        Parameter & Value \\ 
         \midrule
-        Direct Regulation & 0.9091 & 22.7273 \\ 
-        Indirect Regulation & 2.4242 & 27.8788 \\ 
-        And Gate & 2.4242 & 27.2727 \\ 
-        Or Gate & 1.2121 & 27.2727 \\ 
+        \(k_{ia}\) & 5 \\
+        \(K_{ia}\) & 20 \\
+        \(F_a\) & 0.5 \\
+        \(k_{faa}\) & 1 \\
+        \(K_{faa}\) & 1 \\
+        \(k_{cb}\) & 0.1 \\
+        \(K_{cb}\) & 0.01 \\
+        \(F_b\) & 0.5 \\
+        \(k_{fbb}\) & 0.1 \\
+        \(K_{fbb}\) & 0.01 \\
+        \(k_{ac}\) & 10 \\
+        \(K_{ac}\) & 1 \\
+        \(k_{bc}\) & 5 \\
+        \(K_{bc}\) & 0.5 \\
         \bottomrule
     \end{tabular}
+    \label{tab:parameters}
 \end{table}
 
-\pagebreak
+The parameters seen in Table 1, concentrations for \textit{A}, \textit{B}, and \textit{C}, and input signal levels are the values used for the remainder of the paper unless specified otherwise. In Figure 5, we plot the \textit{C} using this set of parameters. This is our basic model and will serve as the comparison for the rest of our models. 
 
-As shown by the values in the table and visualized in Figure 2, the ``and gate'' model behaves most similarly to the indirect model in terms of time to half and full steady state, which both show an initial delay to reach steady state that isn't captured in the ``or gate'' and direct models. Contrastingly, the ``or gate'' model initiates production very quickly, almost mimicking the direct regulation model, which can also be seen in Figure 2. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_basic_model.pdf}
+    \caption{The behavior of the NFLBN circuit under the parameter conditions specified in Table 1. 3.05\% is the difference between the concentration of \textit{C} after responding to a signal increase (green line) and a signal decrease (red line).}
+    \label{fig:5}
+\end{figure}
 
-When we just examine the behavior of initiating \textit{RNAi} production, it seems like the ``and gate'' and ``or gate'' behave very similarly to the indirect and direct models, respectively. This prompted us to examine the behavior of all four models when \textit{TF1} is "turned off", which we mathematically represent from changing the binary value of \textit{TF1} from 1 ("on state") to 0 ("off state") (Table 2). 
+\subsection{Adaptation in NFLBN + \textit{D}}
+
+The parameter sweep for the basic model showed that although there are conditions under which the basic model is adaptive, it's very limited. Using our more complex model that incorporates redundancy with an opposite relationship to that of \textit{B} and \textit{C}, we simulated our more complex model, first using the same parameter values that worked for the NFLBN circuit and just adding the values for the new parameters. Quickly, we saw that the more complex model is also adaptive under the more complex model, as illustrated in Figure 6. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_add_D_model.pdf}
+    \caption{The behavior of the NFLBN circuit with node \textit{D} added under the parameter conditions specified in Table 1. 3.46\% is the difference between the concentration of \textit{C} after responding to a signal increase (green line) and a signal decrease (red line).}
+    \label{fig:6}
+\end{figure}
+
+Once we saw that this model was also adaptive under our parameter set, we tested the robustness of this model compared to the NFLBN circuit. Again, using our adaptive parameters set, we perturbed individual parameters holding the rest constant and examined the range under which the circuit still displayed adaptive behavior. Although adding node \textit{D} was not enough to show robustness to parameter changes across all parameters used in the simple NFLBN model, it did significantly improve robustness in response to changes in specific parameters. In Figures 7 and 8, we show the results of varrying \textit{Fa}, \textit{kfaa}, and \textit{kbc}, which the NFLBN + \textit{D} is more robust in changes to compared to the NFLBN model. These findings are summarized in Table 2. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_basic_explore_1.pdf}
+    \caption{The NFLBN shows limited or no robustness to changes in parameters \textit{Fa}, \textit{kfaa}, and \textit{kbc}. Varrying values for \textit{Fa} (A.) , \textit{kfaa} (B), and \textit{kcb} (C), with all other parameters set to the adaptive paramater values previously described.}
+    \label{fig:7}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf}
+    \caption{The NFLBN + \textit{D} shows improved robustness to changes in parameters \textit{Fa}, \textit{kfaa}, and \textit{kbc} compared to the NFLBN. Varrying values for \textit{Fa} (A.) , \textit{kfaa} (B), and \textit{kcb} (C), with all other parameters set to the adaptive paramater values previously described.}
+    \label{fig:8}
+\end{figure}
 
 \begin{table}[h]
     \centering
-    \caption{Time to Return to [RNAi] = 0}
-    \begin{tabular}{@{}lc@{}}
+    \caption{NFLBN and NFLBN + \textit{D} Adaptive Parameter Value Comparison}
+    \begin{tabular}{@{}lll@{}}
         \toprule
-        \textbf{Regulation Type} & \textbf{Time to Return} \\ 
+        Parameter & NFLBN Value & NFLBN + \textit{D} Value\\ 
         \midrule
-        Direct Regulation & 23.33 \\ 
-        Indirect Regulation & 28.18 \\ 
-        And Gate & 26.36 \\ 
-        Or Gate & 28.79 \\ 
+        \(F_a\) & 0.5, 1 & 0.5, 1, 2, 5\\
+        \(k_{faa}\) & 0.5, 1, 2 & 0.5, 1, 2, 5, 10, 20 \\
+        \(k_{bc}\) & 5 & 5, 10, 20, 50, 100\\
         \bottomrule
     \end{tabular}
+    \label{tab:parameters}
 \end{table}
 
-When \textit{TF1} is set to zero after all four models have had a chance to reach their steady state concentrations of \textit{RNAi}, we see that the ``and gate'' turns off earlier than the indirect circuit while the ``or gate'' turns off later than the direct circuit. These results are opposite of the results for turning on \textit{TF1}, revealing the unique behavior of the ``and gate'' and ``or gate'' feed forward loops. The unique property of the ``and gate'' is to initiate production with a delay and rapidly stop production. The ``or gate'' behaves oppositely, as it can delay stopping production while rapidly initiating production. The behavior after "turning off" \textit{TF1} is also shown in Figure 3. 
+As shown by the values in Table 2, the adaptive behavior of NFLBN + \textit{D} is significant compared to that of the NFLBN. With paramater \textit{Fa}, the NFLBN + \textit{D} can withstand paramater values of a ten-fold difference from 0.5 to 5, whereas the basic NFLBN can only withstand a two-fold difference from 0.5 to 1. For \textit{kfaa}, the basic NFLBN model can continue adaptive behavior under parameters from 0.5 to 2, but the NFLBN + \textit{D} model can behave adaptively from 0.5 to 20, a range that's ten-fold larger in the NFLBN + \textit{D} model. Finally, when it comes to \textit{kbc}, the NFLBN is not robust at all to parameter changes and only behaves adaptively when \textit{kbc = 5}. Contrastingly, the NFLBN + \textit{D} model behaves adaptively with \texitit{kbc} from 5 to 100, showing much greater robustness to parameter changes. 
 
-\section{Discussion}
+\begin{thebibliography}{9}
 
-In this project, we have determined that both the ``and gate'' and ``or gate'' feed forward loop models of regulating transcription have unique properties that are not captured in a simple direct or indirect regulation system. Although you can adjust parameters such as \textit{k2}, \textit{k4}, and \textit{k6} to increase the rate of degradation or production in the direct or indirect models, you cannot adjust the parameters such that only the production rate increases without the degradation rate increasing or vice versa. For example, doubling \textit{k2} will increase the rate of production and increase the rate of degradation. Similarly, doubling \textit{k1} will affect how the concentration of \textit{RNAi} at steady state, but will not change the time to reach steady state because this is determined by the degradation rates. In a feed forward loop like the ``and gate'' or ``or gate'', you can have a quick switch to production or degradation and the and the slow response to the opposite, which is not mathematically possible under the direct or indirect model.  
+\bibitem{challenge2paperD2L} Ma, W., Trusina, A., El-Samad, H., Lim, W. A., \& Tang, C. (2009). Defining network topologies that can achieve biochemical adaptation. \textit{Cell}, 138(4), 760--773. \url{https://doi.org/10.1016/j.cell.2009.06.013}
 
-The ``and gate'' model shows a delay in initiating RNA production and a rapid decline in RNA production when signal is lost. Biologically, this could be relevant in stress response. The delay we see with the ``and gate'' happens because it takes time to build up enough of both transcription factors so they can simultaneously bind to the gene and initiate transcription. Because of the time delay, any noise in signaling will not be enough to initiate full levels transcription but an immediate stop in signaling will abruptly stop transcription. In a stress response, you need a way to filter out noise. If the cell responds to every small amount of noise and immediately activates all stress response pathways, the cell will frequently engage in stress response behavior despite not being under conditions of stress. With the ``and gate'' feed forward loop, this dysfunction isn't possible due to the time delay. So far, this property could be achieved by the indirect model but not the direct model. Where the ``and gate'' model stands out is that it can also rapidly stop RNA production, which the indirect model cannot do under any parameter combinations. If the RNA this process regulates is part of a stress response pathway, we need production to stop as soon after the stress signal stops as possible so that the cell isn't behaving in the stress condition for longer than necessary. This is possible with the ``and gate'' and also the direct regulation model, but not the indirect model. Thus, the ``and gate'' model provides unique functionality that could be useful in conditions like stress response. 
-
-The ``or gate'' model showed a rapid initiation of RNA production and delay in declining RNA production. Biologically, this could be relevant in an immune response. During an immune response, you want a cell to rapidly activate genes that will help with immune function and once the signal that starts the immune cascade is turned off, a delay will help make sure the cell can still respond to any remaining pathogenic activity. The ``or gate'' model works perfectly for this, as it allows a very quick initiation of RNA production, which is also seen in the direct regulation model but not the indirect regulation model. What sets the ``or gate'' apart is that when signal is lost, the ``or gate'' shows a delay that's only seen at the same time point as the indirect model. This means that the ``or gate'' is the only model that would allow a cell to respond rapidly to a signal to activate an immune response and also delay turning off the immune pathway when signal is lost, increasing the cell's immune function at initial exposure to a pathogen and as the pathogen clears. 
-
-
+\end{thebibliography}
 
 \end{document}

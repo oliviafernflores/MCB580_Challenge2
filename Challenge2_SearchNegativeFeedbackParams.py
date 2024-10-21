@@ -92,7 +92,7 @@ def parameter_sweep(y0, time_steps, param_values, param_name, param_index):
         all_results.append(result)
         param_sets.append(param_dict)
         
-        # Calculate percent difference for C at the two time points
+        
         C_value_0_3 = result[int(0.3 * len(time_steps)), 2]
         C_value_0_5 = result[int(0.5 * len(time_steps)), 2]
         percent_difference = calculate_percent_difference(C_value_0_3, C_value_0_5)
@@ -132,9 +132,9 @@ def main():
         param_values = []
         for key in base_params.keys():
             if key == param_name:
-                param_values.append(base_params[key])  # This is a list
+                param_values.append(base_params[key])
             else:
-                param_values.append([param_sets[0][key]])  # Wrap the non-list values in a list
+                param_values.append([param_sets[0][key]])
         index = params_list.index(param_name) + 1
         parameter_sweep(y0, time_steps, param_values, param_name, str(index))
 
