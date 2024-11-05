@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.18)  20 OCT 2024 19:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.18)  4 NOV 2024 22:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -216,24 +216,24 @@ LaTeX Warning: Label `tab:parameters' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -281,111 +281,40 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 149.
  (/Users/olivia/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-Package hyperref Info: Link coloring ON on input line 14.
+Package hyperref Info: Link coloring ON on input line 15.
  (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 16.
+(Font)              <12> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 16.
+(Font)              <8> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 16.
+(Font)              <6> on input line 17.
 </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback.png, id=47, 736.7525pt x 705.63625pt>
 File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback.png Graphic file (type png)
 <use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback.png>
-Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback.png  used on input line 28.
+Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback.png  used on input line 29.
 (pdftex.def)             Requested size: 350.33727pt x 335.53601pt.
  [1
 
 {/Users/olivia/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 35.
+(Font)              <7> on input line 36.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 35.
+(Font)              <5> on input line 36.
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.43 ...{\max}\) is the maximum rate (\textit{k__}
-                                                   * concentration(s) that a...
-? 
-! Missing { inserted.
-<to be read again> 
-                   _
-l.43 ...{\max}\) is the maximum rate (\textit{k__}
-                                                   * concentration(s) that a...
-? 
-! Missing { inserted.
-<to be read again> 
-                   \aftergroup 
-l.43 ...{\max}\) is the maximum rate (\textit{k__}
-                                                   * concentration(s) that a...
-? 
-
-! LaTeX Error: Command \item invalid in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.44     \item
-               \([S]\) is the substrate concentration,
-? 
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.44     \item \(
-                 [S]\) is the substrate concentration,
-? 
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.44     \item \(
-                 [S]\) is the substrate concentration,
-? 
-
-! LaTeX Error: Bad math environment delimiter.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.44     \item \(
-                 [S]\) is the substrate concentration,
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.44     \item \([S]\)
-                       is the substrate concentration,
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.46 \end{itemize}
-                  
-? 
-
-Underfull \hbox (badness 10000) in paragraph at lines 50--52
+Underfull \hbox (badness 10000) in paragraph at lines 51--53
 
  []
 
 ! Undefined control sequence.
-l.56 \text
+l.57 \text
           {I} \cdot k_{ia} \cdot \frac{(1 - A)}{(1 - A) + K_{ia}}
 ? 
 ! Undefined control sequence.
-l.62     \item \(\text
+l.63     \item \(\text
                       {I}\) is the strength of the input signal,
 ? 
 [2 </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback.png>]
@@ -396,105 +325,95 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.68 2
+l.69 2
       . Describes the degradation of A
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--88
+Underfull \hbox (badness 10000) in paragraph at lines 85--89
 
  []
 
 ! Undefined control sequence.
-l.89 \frac{dA}{dt} = \text
+l.90 \frac{dA}{dt} = \text
                           {I} \cdot k_{ia} \cdot \frac{(1 - A)}{(1 - A) + K_...
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--110
+Underfull \hbox (badness 10000) in paragraph at lines 107--111
 
  []
 
 ! Undefined control sequence.
-l.111 \frac{dA}{dt} = \text
+l.112 \frac{dA}{dt} = \text
                            {I} \cdot k_{ia} \cdot \frac{(1 - A)}{(1 - A) + K...
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--119
+Underfull \hbox (badness 10000) in paragraph at lines 118--120
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--124
+Underfull \hbox (badness 10000) in paragraph at lines 121--125
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--132
+Underfull \hbox (badness 10000) in paragraph at lines 129--133
 
  []
 
 [3]
-</Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D.png, id=77, 908.39375pt x 641.39626pt>
+</Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D.png, id=76, 908.39375pt x 641.39626pt>
 File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D.png Graphic file (type png)
 <use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D.png>
-Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D.png  used on input line 140.
+Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D.png  used on input line 141.
 (pdftex.def)             Requested size: 350.33727pt x 247.36404pt.
 
 ! Undefined control sequence.
 <argument> ...ces NFLBN + Additional Node \textid 
                                                   {D}: New components of the...
-l.141 ... loop between \textit{C} and \textit{D}.}
+l.142 ... loop between \textit{C} and \textit{D}.}
                                                   
 ? 
 ! Undefined control sequence.
 <argument> ...x }}NFLBN + Additional Node \textid 
                                                   {D}: New components of the...
-l.141 ... loop between \textit{C} and \textit{D}.}
+l.142 ... loop between \textit{C} and \textit{D}.}
                                                   
 ? 
 ! Undefined control sequence.
 <argument> ...x }}NFLBN + Additional Node \textid 
                                                   {D}: New components of the...
-l.141 ... loop between \textit{C} and \textit{D}.}
+l.142 ... loop between \textit{C} and \textit{D}.}
                                                   
 ? 
-</Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D_and_A_regulates_B.png, id=78, 923.45pt x 677.53125pt>
+</Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D_and_A_regulates_B.png, id=77, 923.45pt x 677.53125pt>
 File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D_and_A_regulates_B.png Graphic file (type png)
 <use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D_and_A_regulates_B.png>
-Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D_and_A_regulates_B.png  used on input line 151.
+Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D_and_A_regulates_B.png  used on input line 152.
 (pdftex.def)             Requested size: 350.33727pt x 257.04068pt.
 ! Undefined control sequence.
 <argument> ...ces NFLBN + Additional Node \textid 
                                                   {D}: New components of the...
-l.152 ...ips is \textit{A} inhibiting \textit{B}.}
+l.153 ...ips is \textit{A} inhibiting \textit{B}.}
                                                   
 ? 
 ! Undefined control sequence.
 <argument> ...x }}NFLBN + Additional Node \textid 
                                                   {D}: New components of the...
-l.152 ...ips is \textit{A} inhibiting \textit{B}.}
+l.153 ...ips is \textit{A} inhibiting \textit{B}.}
                                                   
 ? 
 ! Undefined control sequence.
 <argument> ...x }}NFLBN + Additional Node \textid 
                                                   {D}: New components of the...
-l.152 ...ips is \textit{A} inhibiting \textit{B}.}
+l.153 ...ips is \textit{A} inhibiting \textit{B}.}
                                                   
 ? 
 [4 </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 156--158
+Underfull \hbox (badness 10000) in paragraph at lines 157--159
 
  []
 
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.162 \\
-        
-? 
 
 ! LaTeX Error: There's no line here to end.
 
@@ -512,7 +431,17 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.164 T
+l.164 \\
+        
+? 
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.165 T
        his gives the following equation for \textit{B}:
 ? 
 
@@ -522,95 +451,98 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.167 \[
+l.168 \[
         
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--172
+Underfull \hbox (badness 10000) in paragraph at lines 170--173
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--172
+Underfull \hbox (badness 10000) in paragraph at lines 170--173
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--177
+Underfull \hbox (badness 10000) in paragraph at lines 174--178
 
  []
 
 ! Undefined control sequence.
-l.178 \frac{dA}{dt} = \text
+l.179 \frac{dA}{dt} = \text
                            {I} \cdot k_{ia} \cdot \frac{(1 - A)}{(1 - A) + K...
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--196
+Underfull \hbox (badness 10000) in paragraph at lines 195--197
 
  []
 
 [5 </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_add_D_and_A_regulates_B.png>]
-</Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/ParameterSweepExample.pdf, id=92, 963.6pt x 542.025pt>
+</Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/ParameterSweepExample.pdf, id=91, 963.6pt x 542.025pt>
 File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/ParameterSweepExample.pdf Graphic file (type pdf)
 <use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/ParameterSweepExample.pdf>
-Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/ParameterSweepExample.pdf  used on input line 205.
+Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/ParameterSweepExample.pdf  used on input line 206.
 (pdftex.def)             Requested size: 350.33727pt x 197.06416pt.
-</Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_basic_model.pdf, id=93, 722.7pt x 433.62pt>
+</Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_basic_model.pdf, id=92, 722.7pt x 433.62pt>
 File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_basic_model.pdf Graphic file (type pdf)
 <use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_basic_model.pdf>
-Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_basic_model.pdf  used on input line 240.
+Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_basic_model.pdf  used on input line 241.
 (pdftex.def)             Requested size: 350.33727pt x 210.19958pt.
  [6 </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/ParameterSweepExample.pdf>]
 </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_add_D_model.pdf, id=105, 722.7pt x 433.62pt>
 File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_add_D_model.pdf Graphic file (type pdf)
 <use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_add_D_model.pdf>
-Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_add_D_model.pdf  used on input line 251.
+Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_add_D_model.pdf  used on input line 252.
 (pdftex.def)             Requested size: 350.33727pt x 210.19958pt.
 </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_basic_explore_1.pdf, id=106, 963.6pt x 542.025pt>
 File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_basic_explore_1.pdf Graphic file (type pdf)
 <use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_basic_explore_1.pdf>
-Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_basic_explore_1.pdf  used on input line 260.
+Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_basic_explore_1.pdf  used on input line 261.
 (pdftex.def)             Requested size: 350.33727pt x 197.06416pt.
  [7 </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_basic_model.pdf> </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/results/negative_add_D_model.pdf>]
 </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf, id=192, 963.6pt x 542.025pt>
 File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf Graphic file (type pdf)
 <use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf>
-Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf  used on input line 267.
+Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf  used on input line 268.
 (pdftex.def)             Requested size: 350.33727pt x 197.06416pt.
 
 ! Undefined control sequence.
-l.287 ...D} model behaves adaptively with \texitit
+l.288 ...D} model behaves adaptively with \texitit
                                                   {kbc} from 5 to 100, showi...
 ? 
 [8 </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_basic_explore_1.pdf> </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf>]
-File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_basic_explore_1.pdf Graphic file (type pdf)
-<use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_basic_explore_1.pdf>
-Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_basic_explore_1.pdf  used on input line 313.
+</Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_explore_2.pdf, id=218, 963.6pt x 542.025pt>
+File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_explore_2.pdf Graphic file (type pdf)
+<use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_explore_2.pdf>
+Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_explore_2.pdf  used on input line 314.
 (pdftex.def)             Requested size: 350.33727pt x 197.06416pt.
-File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf Graphic file (type pdf)
-<use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf>
-Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf  used on input line 320.
+</Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_plus_D_explore_2.pdf, id=219, 963.6pt x 542.025pt>
+File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_plus_D_explore_2.pdf Graphic file (type pdf)
+<use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_plus_D_explore_2.pdf>
+Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_plus_D_explore_2.pdf  used on input line 321.
 (pdftex.def)             Requested size: 350.33727pt x 197.06416pt.
- [9]
-File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf Graphic file (type pdf)
-<use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf>
-Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf  used on input line 327.
+ [9 </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_explore_2.pdf>]
+</Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_plus_D_plus_A_regulates_B_explore.pdf, id=236, 963.6pt x 542.025pt>
+File: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_plus_D_plus_A_regulates_B_explore.pdf Graphic file (type pdf)
+<use /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_plus_D_plus_A_regulates_B_explore.pdf>
+Package pdftex.def Info: /Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_plus_D_plus_A_regulates_B_explore.pdf  used on input line 328.
 (pdftex.def)             Requested size: 350.33727pt x 197.06416pt.
- [10]
+ [10 </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_plus_D_explore_2.pdf> </Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_plus_D_plus_A_regulates_B_explore.pdf>]
 ! Misplaced alignment tab character &.
-l.341 ... Trusina, A., El-Samad, H., Lim, W. A., &
+l.342 ... Trusina, A., El-Samad, H., Lim, W. A., &
                                                    Tang, C. (2009). Defining...
 ? 
 ! Misplaced alignment tab character &.
-l.344 Alon, U., Surette, M., Barkai, N., &
+l.345 Alon, U., Surette, M., Barkai, N., &
                                            Leibler, S. (1999). Robustness in...
 ? 
 ! Misplaced alignment tab character &.
-l.347 Wong, H. S., &
+l.348 Wong, H. S., &
                      Germain, R. N. (2018). Robust control of the adaptive i...
 ? 
 ! Misplaced alignment tab character &.
-l.350 ...ao, P., Raineri, E., Garriga-Canut, M., &
+l.351 ...ao, P., Raineri, E., Garriga-Canut, M., &
                                                    Serrano, L. (2008). Evolv...
 ? 
 [11] (./main.aux)
@@ -626,18 +558,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: B78D9D2EF2E6E6A42B10B5CBF6888274;2208.
  ) 
 Here is how much of TeX's memory you used:
- 8878 strings out of 476464
- 144423 string characters out of 5801127
+ 8899 strings out of 476464
+ 146914 string characters out of 5801127
  1936040 words of memory out of 5000000
- 30465 multiletter control sequences out of 15000+600000
+ 30486 multiletter control sequences out of 15000+600000
  563819 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,10n,79p,1774b,502s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,1774b,500s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/olivia/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </Users/olivia/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></Users/olivia/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/olivia/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></Users/olivia/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/olivia/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/olivia/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/olivia/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/olivia/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/olivia/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/olivia/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/olivia/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/olivia/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (11 pages, 915765 bytes).
+Output written on main.pdf (11 pages, 1763317 bytes).
 PDF statistics:
- 312 PDF objects out of 1000 (max. 8388607)
- 184 compressed objects within 2 object streams
+ 342 PDF objects out of 1000 (max. 8388607)
+ 199 compressed objects within 2 object streams
  41 named destinations out of 1000 (max. 500000)
- 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 

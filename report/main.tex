@@ -10,6 +10,7 @@
 
 \title{Developing a Model for a Robust and Adaptive Biological Circuit}
 \author{Olivia Fernflores}
+\date{October 20, 2024}
 
 \begin{document}
 \maketitle
@@ -40,7 +41,7 @@ v = \frac{V_{\max} [S]}{K_m + [S]}
 where:
 \begin{itemize}
     \item \(v\) is the rate of the reaction (speed per unit time), 
-    \item \(V_{\max}\) is the maximum rate (\textit{k__} * concentration(s) that affect rate),
+    \item \(V_{\max}\) is the maximum rate (\textit{k} * concentration(s) that affect rate),
     \item \([S]\) is the substrate concentration,
     \item \(K_m\) is the Michaelis-Menten constant.
 \end{itemize}
@@ -198,7 +199,7 @@ Using this equation in place of equation 2 as previously described, our circuit 
 
 \subsection{Finding Parameter Values for the NFLBN that Allow Adaptation}
 
-The first step in this project was to find a set of parameter values that allow the NFLBN to behave adaptively in response to an input signal. Using the guidelines in Ma et al. \cite{challenge2paperD2L}, we did a parameter sweep across powers of 10 from $1 \times 10^{-2}$ to $1 \times 10^{2}$ using initial concentrations of 0.1, 0.1, and 0.5 for \textit{A}, \textit{B}, and \textit{C} respectively and initial input singal strength of 1 (beginning), adding signal (input = 2) and removing signal (input = 1) every 200 time units (green and red lines on the plot). Iteratively, we examined the behavior of the circuit as we varried each of 13 parameters in our differentials equations while keeping the rest constant. An example of some of the plots generated from these parameter sweeps can be seen below in Figure 4 and the parameter values that allow the NFLBN circuit to behave adaptively are shown in Table 1 (called "Adaptive Parameters" for the remainder of the paper). 
+The first step in this project was to find a set of parameter values that allow the NFLBN to behave adaptively in response to an input signal. Using the guidelines in Ma et al. \cite{challenge2paperD2L}, we did a parameter sweep across powers of 10 from $1 \times 10^{-2}$ to $1 \times 10^{2}$ using initial concentrations of 0.1, 0.1, and 0.5 for \textit{A}, \textit{B}, and \textit{C} respectively and initial input singal strength of 1 (beginning), adding signal (input = 2) and removing signal (input = 1) every 200 time units (green and red lines on the plot). Iteratively, we examined the behavior of the circuit as we varried each of 13 parameters in our differentials equations while keeping the rest constant. An example of some of the plots generated from these parameter sweeps can be seen below in Figure 4 and the parameter values that allow the NFLBN circuit to behave adaptively are shown in Table 1 (called ``Adaptive Parameters'' for the remainder of the paper). 
 
 \begin{figure}[H]
     \centering
@@ -310,22 +311,22 @@ For the simulations summarized in Table 3, as with all simulations throughout th
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_basic_explore_1.pdf}
-    \caption{The NFLBN shows limited or no robustness to changes in parameters \textit{Fa}, \textit{kfaa}, \textit{kbc}, and \textit{kac}. Varrying values for \textit{Fa} (A), \textit{kfaa} (B), and \textit{kcb} (C), and \textit{kac}, with all other parameters set to the adaptive paramater values previously described. Input signal begins at 1, changes to 2 at the green dotted line, then goes back to 1 at the red dotted line. This continues every 200 time units. All other parameters held constant.}
+    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_explore_2.pdf}
+    \caption{The NFLBN shows limited or no robustness to changes in parameters \textit{Fa}, \textit{kfaa}, \textit{kbc}, and \textit{kac}. Varrying values for \textit{Fa} (A), \textit{kfaa} (B), and \textit{kcb} (C), and \textit{kac} (D), with all other parameters set to the adaptive paramater values previously described. Input signal begins at 1, changes to 2 at the green dotted line, then goes back to 1 at the red dotted line. This continues every 200 time units. All other parameters held constant.}
     \label{fig:9}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf}
-    \caption{The NFLBN + \textit{D} shows improved robustness to changes in parameters \textit{Fa}, \textit{kfaa}, and \textit{kbc} compared to the NFLBN. It also shows limited robustness to changes in \textit{kac}. Varrying values for \textit{Fa} (A), \textit{kfaa} (B), \textit{kcb} (C) and \textit{kac}, with all other parameters set to the adaptive paramater values previously described. Input signal begins at 1, changes to 2 at the green dotted line, then goes back to 1 at the red dotted line. This continues every 200 time units. All other parameters held constant.}
+    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_plus_D_explore_2.pdf}
+    \caption{The NFLBN + \textit{D} shows improved robustness to changes in parameters \textit{Fa}, \textit{kfaa}, and \textit{kbc} compared to the NFLBN. It also shows limited robustness to changes in \textit{kac}. Varrying values for \textit{Fa} (A), \textit{kfaa} (B), \textit{kcb} (C) and \textit{kac} (D), with all other parameters set to the adaptive paramater values previously described. Input signal begins at 1, changes to 2 at the green dotted line, then goes back to 1 at the red dotted line. This continues every 200 time units. All other parameters held constant.}
     \label{fig:10}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_plus_D_explore.pdf}
-    \caption{The NFLBN + \textit{D} + \textit{A} regulates \textit{B} shows improved robustness to changes in parameters \textit{Fa}, \textit{kfaa}, \textit{kbc}, and \textit{kac} compared to the NFLBN. Robustness to change in \textit{Fa}, \textit{kfaa}, and \textit{kbc} values is seen in NFLBN + \textit{D}, but not robustness to changes in \textit{kac}. Varrying values for \textit{Fa} (A), \textit{kfaa} (B), and \textit{kcb} (C), and \textit{kac}, with all other parameters set to the adaptive paramater values previously described. Input signal begins at 1, changes to 2 at the green dotted line, then goes back to 1 at the red dotted line. This continues every 200 time units. All other parameters held constant.}
+    \includegraphics[width=0.7\textwidth]{/Users/olivia/Documents/Fall 2024/MCB 580/MCB580_Challenge2/report/negative_feedback_plus_D_plus_A_regulates_B_explore.pdf}
+    \caption{The NFLBN + \textit{D} + \textit{A} regulates \textit{B} shows improved robustness to changes in parameters \textit{Fa}, \textit{kfaa}, \textit{kbc}, and \textit{kac} compared to the NFLBN. Robustness to change in \textit{Fa}, \textit{kfaa}, and \textit{kbc} values is seen in NFLBN + \textit{D}, but not robustness to changes in \textit{kac}. Varrying values for \textit{Fa} (A), \textit{kfaa} (B), and \textit{kcb} (C), and \textit{kac} (D), with all other parameters set to the adaptive paramater values previously described. Input signal begins at 1, changes to 2 at the green dotted line, then goes back to 1 at the red dotted line. This continues every 200 time units. All other parameters held constant.}
     \label{fig:11}
 \end{figure}
 
